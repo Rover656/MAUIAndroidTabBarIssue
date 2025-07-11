@@ -1,16 +1,12 @@
-﻿namespace MAUIAndroidTabBarIssue
-{
-    public partial class MainPage : ContentPage
-    {
+﻿namespace MAUIAndroidTabBarIssue.Pages {
+    public partial class AnotherPage : ContentPage {
         int count = 0;
 
-        public MainPage()
-        {
+        public AnotherPage() {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
-        {
+        private void OnCounterClicked(object? sender, EventArgs e) {
             count++;
 
             if (count == 1)

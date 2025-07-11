@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="MAUIAndroidTabBarIssue.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MAUIAndroidTabBarIssue"
-    Title="MAUIAndroidTabBarIssue">
+  x:Class="MAUIAndroidTabBarIssue.AppShell"
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+  xmlns:pages="clr-namespace:MAUIAndroidTabBarIssue.Pages"
+  Title="MAUIAndroidTabBarIssue"
+  x:Name="this">
 
+  <Shell.Resources>
+    <ResourceDictionary>
+      <toolkit:InvertedBoolConverter
+        x:Key="InvertedBoolConverter" />
+    </ResourceDictionary>
+  </Shell.Resources>
+
+  <FlyoutItem
+    x:Name="flyout"
+    Title="Main"
+    Route="Main"
+    FlyoutDisplayOptions="AsMultipleItems">
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+      x:Name="HomeTab"
+      Title="Home"
+      IsVisible="{Binding IsLoggedIn, Source={x:Reference this}}"
+      ContentTemplate="{DataTemplate pages:MainPage}"
+      Route="MainPage" />
+    <ShellContent
+      x:Name="Tab2"
+      Title="Page 2"
+      IsVisible="{Binding IsLoggedIn, Source={x:Reference this}}"
+      ContentTemplate="{DataTemplate pages:AnotherPage}"
+      Route="AnotherPage" />
+    <ShellContent
+      x:Name="Tab3"
+      Title="Page 3"
+      IsVisible="{Binding IsLoggedIn, Source={x:Reference this}}"
+      ContentTemplate="{DataTemplate pages:AThirdPage}"
+      Route="AThirdPage" />
+    <ShellContent
+      x:Name="Tab4"
+      Title="Page 4"
+      IsVisible="{Binding IsLoggedIn, Source={x:Reference this}}"
+      ContentTemplate="{DataTemplate pages:Page4}"
+      Route="Page4" />
+    <ShellContent
+      x:Name="Tab5"
+      Title="Page 5"
+      IsVisible="{Binding IsLoggedIn, Source={x:Reference this}}"
+      ContentTemplate="{DataTemplate pages:Page5}"
+      Route="Page5" />
+    <ShellContent
+      x:Name="LoginTab"
+      Title="Login"
+      IsVisible="{Binding IsLoggedIn, Source={x:Reference this}, Converter={StaticResource InvertedBoolConverter}}"
+      ContentTemplate="{DataTemplate pages:PretendLoginPage}"
+      Route="PretendLoginPage" />
+  </FlyoutItem>
 
 </Shell>
